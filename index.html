@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dharmik &amp; Drashti — Engagement Ceremony</title>
+  <meta name="description"
+    content="Engagement Ceremony Invitation of Dharmik & Drashti on 23rd August 2026 at Ramvadi, Nawa Para, Bhavnagar, Gujarat." />
+
+  <!-- Google Fonts: Marcellus, Cormorant Garamond, Noto Serif Gujarati -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Marcellus&family=Noto+Serif+Gujarati:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Floating Falling Petals Canvas -->
+  <canvas id="petalsCanvas"></canvas>
+
+  <!-- Background Music Audio -->
+  <audio id="bgMusic" loop preload="auto">
+    <source
+      src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-flute-ambient-112347.mp3"
+      type="audio/mpeg">
+  </audio>
+
+  <!-- Top Fixed Bar: Music & Language Switcher -->
+  <div class="top-nav-bar">
+    <button class="music-toggle-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle Music">
+      <svg class="music-icon icon-play" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+      </svg>
+      <svg class="music-icon icon-mute" viewBox="0 0 24 24" style="display:none;">
+        <path fill="currentColor"
+          d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73l4.27 4.27c-.41.29-.88.51-1.39.64v2.05c1.07-.24 2.06-.75 2.9-1.46l2.96 2.96 1.27-1.27L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+      </svg>
+      <span class="music-text" data-en="Music" data-gu="સંગીત">Music</span>
+    </button>
+
+    <div class="lang-toggle-pill">
+      <button class="lang-btn active" id="btnEn" onclick="setLang('en')">English</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" id="btnGu" onclick="setLang('gu')">ગુજરાતી</button>
+    </div>
+  </div>
+
+  <!-- OM HEADER BANNER -->
+  <div class="om-header-banner">
+    <div class="banner-border-line"></div>
+    <div class="banner-content">
+      <span class="banner-text" data-en="Ring Ceremony" data-gu="સગાઈ">Ring Ceremony</span>
+    </div>
+    <div class="banner-border-line"></div>
+  </div>
+
+  <!-- HERO SECTION WITH COUPLE ILLUSTRATION BACKGROUND -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-illustration">
+      <img src="images/hero-couple.png" alt="Indian Engagement Couple Artwork" class="couple-bg-img" />
+      <div class="hero-overlay-gradient"></div>
+    </div>
+
+    <!-- Rotating Golden Mandala Background Ornament -->
+    <div class="mandala-bg-spin"></div>
+
+    <div class="hero-content">
+      <p class="hero-subtitle" data-en="Together with our families" data-gu="અમારા પરિવારો વતી સ્નેહપૂર્ણ નિમંત્રણ">
+        Together with our families</p>
+
+      <div class="couple-title-wrap">
+        <h1 class="couple-title">
+          <span class="name-groom" data-en="Dharmik" data-gu="ધાર્મિક">Dharmik</span>
+          <span class="ampersand" data-en="&amp;" data-gu="અને">&amp;</span>
+          <span class="name-bride" data-en="Drashti" data-gu="દ્રષ્ટિ">Drashti</span>
+        </h1>
+      </div>
+
+      <p class="hero-invitation-lead" data-en="joyfully invite you to celebrate their Engagement Ceremony"
+        data-gu="ધાર્મિક અને દ્રષ્ટિના શુભ સગાઈ સમારોહમાં આપનું હાર્દિક સ્વાગત છે">joyfully invite you to celebrate
+        their Engagement Ceremony</p>
+
+      <div class="royal-date-badge">
+        <span data-en="23rd August 2026" data-gu="૨૩ ઓગસ્ટ ૨૦૨૬">23rd August 2026</span>
+        <span class="badge-dot">·</span>
+        <span data-en="Bhavnagar, Gujarat" data-gu="ભાવનગર, ગુજરાત">Bhavnagar, Gujarat</span>
+      </div>
+
+      <!-- Diyas and Lotus Row -->
+      <div class="diyas-container">
+        <svg class="diya-svg" viewBox="0 0 64 64">
+          <path d="M12 40 C12 52, 22 56, 32 56 C42 56, 52 52, 52 40 Z" fill="#e8ab3e" />
+          <path class="flame-path" d="M32 12 C32 12, 24 28, 32 36 C40 28, 32 12, 32 12 Z" fill="#ff9d00" />
+        </svg>
+        <span class="diyas-sep">❖</span>
+        <svg class="diya-svg" viewBox="0 0 64 64">
+          <path d="M12 40 C12 52, 22 56, 32 56 C42 56, 52 52, 52 40 Z" fill="#e8ab3e" />
+          <path class="flame-path" d="M32 12 C32 12, 24 28, 32 36 C40 28, 32 12, 32 12 Z" fill="#ff9d00" />
+        </svg>
+        <span class="diyas-sep">❖</span>
+        <svg class="diya-svg" viewBox="0 0 64 64">
+          <path d="M12 40 C12 52, 22 56, 32 56 C42 56, 52 52, 52 40 Z" fill="#e8ab3e" />
+          <path class="flame-path" d="M32 12 C32 12, 24 28, 32 36 C40 28, 32 12, 32 12 Z" fill="#ff9d00" />
+        </svg>
+      </div>
+
+      <a href="#blessing" class="scroll-indicator">
+        <span data-en="Scroll" data-gu="નીચે જુઓ">Scroll</span>
+        <div class="scroll-line"></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- BLESSING SECTION -->
+  <section class="site-section blessing-section" id="blessing">
+    <div class="gold-framed-box">
+      <div class="corner-ornament top-left"></div>
+      <div class="corner-ornament top-right"></div>
+      <div class="corner-ornament bottom-left"></div>
+      <div class="corner-ornament bottom-right"></div>
+
+      <div class="section-icon-header">
+        <svg class="ganesha-header-svg" viewBox="0 0 100 100">
+          <path
+            d="M50,10 C40,10 32,18 32,28 C32,38 42,42 45,46 C40,48 30,55 30,68 C30,82 40,90 50,90 C60,90 70,82 70,68 C70,55 60,48 55,46 C58,42 68,38 68,28 C68,18 60,10 50,10 Z"
+            fill="url(#goldGrad)" />
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f4ead5" />
+              <stop offset="50%" stop-color="#e8ab3e" />
+              <stop offset="100%" stop-color="#bf872b" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <h2 class="section-heading" data-en="A Promise of Forever" data-gu="સનાતન પ્રેમ અને આશીર્વાદ">
+        <span class="heading-symbol">ॐ</span> A Promise of Forever
+      </h2>
+      <div class="gold-divider"><span>. ❖ .</span></div>
+
+      <p class="blessing-text"
+        data-en="With hearts full of gratitude and the blessings of Lord Ganesha, we joyfully invite you to our engagement ceremony as we exchange rings and promise a lifetime together. Your presence and blessings will make our special day complete."
+        data-gu="શ્રી ગણેશજીના પરમ આશીર્વાદ અને પરમ કૃપા સાથે, અમે આપ સૌ સ્નેહીજનોને ધાર્મિક અને દ્રષ્ટિના સગાઈ મહોત્સવમાં હૃદયપૂર્વક આમંત્રિત કરીએ છીએ - જ્યાં અમે જીવનભરનું વચન આપવાના છીએ. આપની ઉપસ્થિતિ અને આશીર્વાદ અમારા આ શુભ દિવસને સંપૂર્ણ બનાવશે.">
+        With hearts full of gratitude and the blessings of Lord Ganesha, we joyfully invite you to our engagement
+        ceremony as we exchange rings and promise a lifetime together. Your presence and blessings will make our special
+        day complete.</p>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN SECTION -->
+  <section class="site-section countdown-section" id="countdown">
+    <p class="section-sub-label" data-en="Counting down to our special day" data-gu="આ ખાસ દિવસ માટેની ઉલ્ટી ગણતરી">
+      Counting down to our special day</p>
+
+    <div class="timer-grid">
+      <div class="timer-card">
+        <div class="timer-number-box">
+          <span class="timer-num" id="countDays">00</span>
+        </div>
+        <span class="timer-unit-label" data-en="Days" data-gu="દિવસ">Days</span>
+      </div>
+      <div class="timer-card">
+        <div class="timer-number-box">
+          <span class="timer-num" id="countHours">00</span>
+        </div>
+        <span class="timer-unit-label" data-en="Hours" data-gu="કલાક">Hours</span>
+      </div>
+      <div class="timer-card">
+        <div class="timer-number-box">
+          <span class="timer-num" id="countMins">00</span>
+        </div>
+        <span class="timer-unit-label" data-en="Minutes" data-gu="મિનિટ">Minutes</span>
+      </div>
+      <div class="timer-card">
+        <div class="timer-number-box">
+          <span class="timer-num" id="countSecs">00</span>
+        </div>
+        <span class="timer-unit-label" data-en="Seconds" data-gu="સેકન્ડ">Seconds</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUPLE SECTION WITH CUSTOM ILLUSTRATIONS -->
+  <section class="site-section couple-section" id="couple">
+    <h2 class="section-heading" data-en="The Happy Couple" data-gu="શુભ જોડી">The Happy Couple</h2>
+    <div class="gold-divider"><span>. ❖ .</span></div>
+
+    <div class="couple-grid">
+      <!-- Groom Card -->
+      <div class="couple-card groom-card">
+        <div class="card-role-badge" data-en="The Groom" data-gu="વરરાજા">The Groom</div>
+        <div class="avatar-frame">
+          <img src="images/groom.png" alt="Dharmik Groom Illustration" class="avatar-img" />
+        </div>
+        <h3 class="person-name" data-en="Dharmik" data-gu="ધાર્મિક">Dharmik</h3>
+        <p class="person-desc"
+          data-en="A kind heart with a warm smile, full of dreams and quiet strength. Ready to begin a beautiful new chapter hand in hand with Drashti."
+          data-gu="નમ્ર સ્વભાવ, સ્નેહભર્યું સ્મિત અને આત્મવિશ્વાસથી પરિપૂર્ણ. દ્રષ્ટિ સાથે જીવનના નવા અને સુંદર અધ્યાયની મંગલ શરૂઆત કરવા આતુર.">
+          A kind heart with a warm smile, full of dreams and quiet strength. Ready to begin a beautiful new chapter hand
+          in hand with Drashti.</p>
+      </div>
+
+      <!-- Bride Card -->
+      <div class="couple-card bride-card">
+        <div class="card-role-badge" data-en="The Bride" data-gu="કન્યા">The Bride</div>
+        <div class="avatar-frame">
+          <img src="images/bride.png" alt="Drashti Bride Illustration" class="avatar-img" />
+        </div>
+        <h3 class="person-name" data-en="Drashti" data-gu="દ્રષ્ટિ">Drashti</h3>
+        <p class="person-desc"
+          data-en="Graceful, spirited, and endlessly loving. She fills every moment with joy and is excited to walk this journey of a lifetime with Dharmik."
+          data-gu="લાવણ્યમય, ઉત્સાહી અને વાત્સલ્યસભર. જીવનની દરેક ક્ષણને આનંદથી ભરી દેતી અને ધર્મિક સાથે આજીવન આત્મીય સફર માણવા ઉત્સુક.">
+          Graceful, spirited, and endlessly loving. She fills every moment with joy and is excited to walk this journey
+          of a lifetime with Dharmik.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHEN & WHERE SECTION -->
+  <section class="site-section venue-section" id="venue">
+    <h2 class="section-heading" data-en="When &amp; Where" data-gu="શુભ મુહૂર્ત અને સ્થળ">When &amp; Where</h2>
+    <p class="section-sub-label" data-en="Save the date" data-gu="આ મંગલ તારીખ યાદ રાખો">Save the date</p>
+    <div class="gold-divider"><span>. ❖ .</span></div>
+
+    <div class="venue-cards-grid">
+      <!-- Date Card -->
+      <div class="venue-card">
+        <div class="card-top-content">
+          <div class="venue-icon-box">
+            <svg class="venue-svg" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
+            </svg>
+          </div>
+          <div class="venue-card-label" data-en="The Date" data-gu="શુભ દિન">The Date</div>
+          <div class="venue-card-sub" data-en="Sunday" data-gu="રવિવાર">Sunday</div>
+          <div class="venue-card-title" data-en="23rd August 2026" data-gu="૨૩ ઓગસ્ટ ૨૦૨૬">23rd August 2026</div>
+        </div>
+        <div class="card-bottom-action">
+          <button class="action-btn" onclick="addToCalendar()">
+            <span data-en="Add to Calendar" data-gu="કેલેન્ડરમાં ઉમેરો">Add to Calendar</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Time Card -->
+      <div class="venue-card">
+        <div class="card-top-content">
+          <div class="venue-icon-box">
+            <svg class="venue-svg" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+            </svg>
+          </div>
+          <div class="venue-card-label" data-en="The Time" data-gu="શુભ સમય">The Time</div>
+          <div class="venue-card-sub" data-en="Morning" data-gu="સવારે">Morning</div>
+          <div class="venue-card-title" data-en="9:00 AM onwards" data-gu="સવારે ૧૦:૦૦ વાગ્યાથી">9:00 AM onwards</div>
+        </div>
+        <div class="card-bottom-action">
+          <button class="action-btn" onclick="addToCalendar()">
+            <span data-en="Set Reminder" data-gu="રિમાઇન્ડર મુકો">Set Reminder</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Venue Location Card -->
+      <div class="venue-card">
+        <div class="card-top-content">
+          <div class="venue-icon-box">
+            <svg class="venue-svg" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+          </div>
+          <div class="venue-card-label" data-en="The Venue" data-gu="શુભ સ્થળ">The Venue</div>
+          <div class="venue-card-sub" data-en="Ramvadi, Nawa Para" data-gu="રામવાડી, નવા પરા">Ramvadi, Nawa Para</div>
+          <div class="venue-card-title" data-en="Bhavnagar, Gujarat" data-gu="ભાવનગર, ગુજરાત">Bhavnagar, Gujarat</div>
+        </div>
+        <div class="card-bottom-action">
+          <a href="https://maps.app.goo.gl/4Ncdr54v2mUfxGdu9" target="_blank" rel="noopener" class="action-btn">
+            <span data-en="View on Map" data-gu="ગુગલ મેપ પર જુઓ">View on Map</span> 🗺️
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE SECTION -->
+  <section class="site-section quote-section">
+    <div class="quote-container">
+      <span class="quote-symbol">“</span>
+      <blockquote class="quote-text" data-en="Two hearts, one soul, a promise for a lifetime."
+        data-gu="બે પવિત્ર હૃદય, એક આત્મા - જીવનભરના સાથનું અમર વચન.">Two hearts, one soul, a promise for a lifetime.
+      </blockquote>
+      <span class="quote-symbol">”</span>
+    </div>
+  </section>
+
+  <!-- FOOTER MATCHING MAROON THEME (NOT Harsh Black) -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-names">Dharmik &amp; Drashti</div>
+      <div class="footer-hashtag">#DharmikDrashti</div>
+      <p class="footer-message"
+        data-en="We look forward to celebrating with you and your family. With love and blessings."
+        data-gu="અમે આપના અને આપના પરિવારના આગમનની આતુરતાથી રાહ જોઈ રહ્યા છીએ. સ્નેહ અને વંદન સહ.">We look forward to
+        celebrating with you and your family. With love and blessings.</p>
+
+      <div class="footer-diyas-row">
+        <svg class="footer-diya" viewBox="0 0 64 64">
+          <path d="M12 40 C12 52, 22 56, 32 56 C42 56, 52 52, 52 40 Z" fill="#e8ab3e" />
+          <path d="M32 12 C32 12, 24 28, 32 36 C40 28, 32 12, 32 12 Z" fill="#ff9d00" />
+        </svg>
+        <span class="footer-heart">❤️</span>
+        <svg class="footer-diya" viewBox="0 0 64 64">
+          <path d="M12 40 C12 52, 22 56, 32 56 C42 56, 52 52, 52 40 Z" fill="#e8ab3e" />
+          <path d="M32 12 C32 12, 24 28, 32 36 C40 28, 32 12, 32 12 Z" fill="#ff9d00" />
+        </svg>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
