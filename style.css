@@ -226,6 +226,7 @@ body.lang-gu .banner-content {
   border: 1px solid rgba(232, 171, 62, 0.12);
   background: repeating-radial-gradient(circle, rgba(232, 171, 62, 0.02) 0, rgba(232, 171, 62, 0.02) 15px, transparent 15px, transparent 30px);
   animation: spinMandala 120s linear infinite;
+  will-change: transform;
   pointer-events: none;
   z-index: -1;
 }
@@ -384,6 +385,11 @@ body.lang-gu .royal-date-badge {
   padding: 5rem 1.5rem;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.site-section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 400px;
 }
 
 .section-heading {

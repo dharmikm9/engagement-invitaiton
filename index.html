@@ -2,20 +2,25 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dharmik &amp; Drashti — Engagement Ceremony</title>
-  <meta name="description"
-    content="Engagement Ceremony Invitation of Dharmik & Drashti on 23rd August 2026 at Ramvadi, Nawa Para, Bhavnagar, Gujarat." />
+  <!-- Performance & SEO Meta Tags -->
+  <meta name="theme-color" content="#3c0b0e" />
+  <meta property="og:title" content="Dharmik &amp; Drashti — Engagement Ceremony" />
+  <meta property="og:description" content="Engagement Ceremony Invitation of Dharmik & Drashti on 23rd August 2026 at Ramvadi, Nawa Para, Bhavnagar, Gujarat." />
+  <meta property="og:image" content="images/hero-couple.webp" />
+  <meta property="og:type" content="website" />
 
-  <!-- Google Fonts: Marcellus, Cormorant Garamond, Noto Serif Gujarati -->
+  <!-- Preload Critical Hero Image for instant LCP -->
+  <link rel="preload" as="image" href="images/hero-couple.webp" type="image/webp" fetchpriority="high" />
+
+  <!-- Optimized Google Fonts: Marcellus, Cormorant Garamond, Noto Serif Gujarati -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Marcellus&family=Noto+Serif+Gujarati:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marcellus&family=Noto+Serif+Gujarati:wght@400;600;700&display=swap"
     rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -23,8 +28,8 @@
   <!-- Floating Falling Petals Canvas -->
   <canvas id="petalsCanvas"></canvas>
 
-  <!-- Background Music Audio -->
-  <audio id="bgMusic" loop preload="auto">
+  <!-- Background Music Audio (On-Demand Loading) -->
+  <audio id="bgMusic" loop preload="none">
     <source
       src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-flute-ambient-112347.mp3"
       type="audio/mpeg">
@@ -63,7 +68,10 @@
   <!-- HERO SECTION WITH COUPLE ILLUSTRATION BACKGROUND -->
   <section class="hero-section" id="hero">
     <div class="hero-bg-illustration">
-      <img src="images/hero-couple.png" alt="Indian Engagement Couple Artwork" class="couple-bg-img" />
+      <picture>
+        <source srcset="images/hero-couple.webp" type="image/webp" />
+        <img src="images/hero-couple.png" alt="Indian Engagement Couple Artwork" class="couple-bg-img" fetchpriority="high" width="1024" height="1024" />
+      </picture>
       <div class="hero-overlay-gradient"></div>
     </div>
 
@@ -197,7 +205,10 @@
       <div class="couple-card groom-card">
         <div class="card-role-badge" data-en="The Groom" data-gu="વરરાજા">The Groom</div>
         <div class="avatar-frame">
-          <img src="images/groom.png" alt="Dharmik Groom Illustration" class="avatar-img" />
+          <picture>
+            <source srcset="images/groom.webp" type="image/webp" />
+            <img src="images/groom.png" alt="Dharmik Groom Illustration" class="avatar-img" loading="lazy" decoding="async" width="500" height="500" />
+          </picture>
         </div>
         <h3 class="person-name" data-en="Dharmik" data-gu="ધાર્મિક">Dharmik</h3>
         <p class="person-desc"
@@ -211,7 +222,10 @@
       <div class="couple-card bride-card">
         <div class="card-role-badge" data-en="The Bride" data-gu="કન્યા">The Bride</div>
         <div class="avatar-frame">
-          <img src="images/bride.png" alt="Drashti Bride Illustration" class="avatar-img" />
+          <picture>
+            <source srcset="images/bride.webp" type="image/webp" />
+            <img src="images/bride.png" alt="Drashti Bride Illustration" class="avatar-img" loading="lazy" decoding="async" width="500" height="500" />
+          </picture>
         </div>
         <h3 class="person-name" data-en="Drashti" data-gu="દ્રષ્ટિ">Drashti</h3>
         <p class="person-desc"
@@ -327,7 +341,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 
 </html>

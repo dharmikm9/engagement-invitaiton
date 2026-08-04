@@ -107,21 +107,24 @@ function addToCalendar() {
 }
 
 
-// ── 5. FALLING ROSE PETALS CANVAS ───────────────────────
+// ── 5. FALLING ROSE PETALS CANVAS (PERFORMANCE OPTIMIZED) ─────────
 (function initPetalsCanvas() {
   const canvas = document.getElementById('petalsCanvas');
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { alpha: true });
   let W, H;
+  let animId = null;
+  let isTabActive = true;
 
   function resize() {
     W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
   }
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  const PETAL_COUNT = 35;
+  // Reduce petal count on mobile screens to maintain smooth 60fps
+  const PETAL_COUNT = W < 600 ? 18 : 32;
   const COLORS = ['#e8ab3e', '#f4ead5', '#ff9aa2', '#bf872b'];
 
   const petals = Array.from({ length: PETAL_COUNT }, () => createPetal());
@@ -130,9 +133,9 @@ function addToCalendar() {
     return {
       x: Math.random() * W,
       y: fromTop ? -20 : Math.random() * H,
-      size: 6 + Math.random() * 12,
-      speedY: 0.5 + Math.random() * 1.1,
-      speedX: (Math.random() - 0.5) * 0.6,
+      size: 6 + Math.random() * 10,
+      speedY: 0.5 + Math.random() * 1.0,
+      speedX: (Math.random() - 0.5) * 0.5,
       rotation: Math.random() * Math.PI * 2,
       rotSpeed: (Math.random() - 0.5) * 0.03,
       opacity: 0.3 + Math.random() * 0.5,
@@ -155,6 +158,7 @@ function addToCalendar() {
   }
 
   function render() {
+    if (!isTabActive) return;
     ctx.clearRect(0, 0, W, H);
     petals.forEach(p => {
       p.y += p.speedY;
@@ -167,8 +171,21 @@ function addToCalendar() {
 
       drawPetal(p);
     });
-    requestAnimationFrame(render);
+    animId = requestAnimationFrame(render);
   }
+
+  // Pause canvas animation when tab is inactive to preserve CPU & mobile battery
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      isTabActive = false;
+      if (animId) cancelAnimationFrame(animId);
+    } else {
+      if (!isTabActive) {
+        isTabActive = true;
+        render();
+      }
+    }
+  });
 
   render();
 })();
