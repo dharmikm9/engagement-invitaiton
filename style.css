@@ -720,9 +720,11 @@ body.lang-gu .person-desc {
 body.lang-gu .couple-title,
 body.lang-gu .name-groom,
 body.lang-gu .name-bride,
+body.lang-gu .ampersand,
 body.lang-gu .person-name,
 body.lang-gu .footer-names {
   font-family: var(--font-gu);
+  font-style: normal;
 }
 
 .heading-symbol {
@@ -974,8 +976,17 @@ body.lang-gu .footer-message {
     font-size: 2.8rem;
   }
 
+  .ampersand {
+    margin: 0.5rem 0;
+  }
+
   body.lang-gu .couple-title {
     font-size: 2.5rem;
+  }
+
+  body.lang-gu .ampersand {
+    margin: 0.6rem 0;
+    font-size: 0.8em;
   }
 
   .couple-grid { gap: 1.5rem; }
