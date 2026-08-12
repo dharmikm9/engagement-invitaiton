@@ -83,7 +83,78 @@
       <div class="couple-title-wrap">
         <h1 class="couple-title">
           <span class="name-groom" data-en="Dharmik" data-gu="ધાર્મિક">Dharmik</span>
-          <span class="ampersand" data-en="&amp;" data-gu="અને">&amp;</span>
+          <span class="couple-ring-wrap" aria-label="Engagement Rings Symbol">
+            <svg class="couple-ring-svg" width="120" height="75" viewBox="0 0 120 75" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Bright Luminous Metallic Gold Gradient -->
+                <linearGradient id="ringGoldMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="25%" stop-color="#FFE885"/>
+                  <stop offset="50%" stop-color="#F5C869"/>
+                  <stop offset="75%" stop-color="#E5A624"/>
+                  <stop offset="100%" stop-color="#FFF5C2"/>
+                </linearGradient>
+
+                <!-- Soft Glow Radial Filter -->
+                <radialGradient id="ringGlowBacking" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#FFE885" stop-opacity="0.9"/>
+                  <stop offset="50%" stop-color="#E8AB3E" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#E8AB3E" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Ambient Gold Backlight Glow Flare -->
+              <ellipse cx="60" cy="38" rx="45" ry="25" fill="url(#ringGlowBacking)" class="ring-ambient-glow"/>
+
+              <!-- Ring 1 (Groom's Ring - Left Gold Band) -->
+              <g transform="translate(42, 42) rotate(-15)" class="ring-groom-group">
+                <!-- Groom Ring Solid Dark Gold Base -->
+                <ellipse cx="0" cy="0" rx="20" ry="20" fill="none" stroke="#7A5207" stroke-width="9"/>
+                <!-- Groom Ring Luminous Gold Stroke -->
+                <ellipse cx="0" cy="0" rx="20" ry="20" fill="none" stroke="#F7D070" stroke-width="7"/>
+                <!-- Groom Ring Inner White Highlight -->
+                <ellipse cx="0" cy="0" rx="17.2" ry="17.2" fill="none" stroke="#FFFFFF" stroke-width="1.8" opacity="0.95"/>
+              </g>
+
+              <!-- Ring 2 (Bride's Ring - Right Gold Band with Diamond) -->
+              <g transform="translate(76, 42) rotate(15)" class="ring-bride-group">
+                <!-- Bride Ring Solid Dark Gold Base -->
+                <ellipse cx="0" cy="0" rx="19" ry="19" fill="none" stroke="#7A5207" stroke-width="8.5"/>
+                <!-- Bride Ring Luminous Gold Stroke -->
+                <ellipse cx="0" cy="0" rx="19" ry="19" fill="none" stroke="#F7D070" stroke-width="6.5"/>
+                <!-- Bride Ring Inner White Highlight -->
+                <ellipse cx="0" cy="0" rx="16.4" ry="16.4" fill="none" stroke="#FFFFFF" stroke-width="1.8" opacity="0.9"/>
+              </g>
+
+              <!-- Interlocking Overlap Arc (Groom ring front arc over Bride ring) -->
+              <path d="M 50 25 A 20 20 0 0 1 60 42" fill="none" stroke="#F7D070" stroke-width="7" stroke-linecap="round"/>
+              <path d="M 50 25 A 20 20 0 0 1 60 42" fill="none" stroke="#FFFFFF" stroke-width="1.8" opacity="0.95" stroke-linecap="round"/>
+
+              <!-- Solitaire Diamond Mount & Setting -->
+              <g class="ring-diamond-setting">
+                <!-- Prongs -->
+                <path d="M 70 23 L 72 16 M 82 23 L 80 16" stroke="#F7D070" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Diamond Base Pavilion -->
+                <polygon points="70,16 82,16 76,25" fill="#E1F5FE" stroke="#80D8FF" stroke-width="0.8"/>
+                <!-- Diamond Crown Table -->
+                <polygon points="73,9 79,9 82,16 70,16" fill="#FFFFFF"/>
+                <!-- Facet Lines -->
+                <line x1="73" y1="9" x2="76" y2="16" stroke="#B3E5FC" stroke-width="0.8"/>
+                <line x1="79" y1="9" x2="76" y2="16" stroke="#80D8FF" stroke-width="0.8"/>
+                <line x1="73" y1="9" x2="79" y2="9" stroke="#FFFFFF" stroke-width="1.5"/>
+              </g>
+
+              <!-- Diamond Sparkle Starburst Flares -->
+              <g class="ring-sparkle-group">
+                <!-- Main Starburst Flare -->
+                <path class="ring-sparkle-star" d="M 76 0 L 78.5 7 L 86 9 L 78.5 11 L 76 18 L 73.5 11 L 66 9 L 73.5 7 Z" fill="#FFFFFF"/>
+                <!-- Center Core Flash -->
+                <circle cx="76" cy="9" r="3.5" fill="#FFFFFF" class="ring-sparkle-core"/>
+                <!-- Secondary Sparkle -->
+                <path class="ring-sparkle-micro" d="M 44 24 L 45.5 27.5 L 49 29 L 45.5 30.5 L 44 34 L 42.5 30.5 L 39 29 L 42.5 27.5 Z" fill="#FFFFFF" opacity="0.95"/>
+              </g>
+            </svg>
+          </span>
           <span class="name-bride" data-en="Drashti" data-gu="દ્રષ્ટિ">Drashti</span>
         </h1>
       </div>
