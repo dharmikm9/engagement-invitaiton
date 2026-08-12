@@ -1,6 +1,6 @@
 # 🪔 Dharmik & Drashti — Royal Engagement Invitation Website
 
-A luxury, traditional Indian engagement invitation website built for **Dharmik & Drashti**'s Ring Ceremony on **23rd August 2026** at **Ramvadi, Nawa Para, Bhavnagar, Gujarat**.
+A luxury, traditional Indian engagement invitation website built for **Dharmik & Drashti**'s Ring Ceremony on **Sunday, 23rd August 2026** at **Ramvadi, Nawa Para, Bhavnagar, Gujarat**.
 
 ---
 
