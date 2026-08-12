@@ -2,6 +2,63 @@
    TRADITIONAL INDIAN ENGAGEMENT INVITATION DESIGN SYSTEM
    ========================================================================== */
 
+/* Self-Hosted Fonts */
+@font-face {
+  font-family: 'Marcellus';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/marcellus-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/cormorantgaramond-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/cormorantgaramond-400-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/cormorantgaramond-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Serif Gujarati';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/notoserifgujarati-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Serif Gujarati';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/notoserifgujarati-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Serif Gujarati';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/notoserifgujarati-700-normal.woff2') format('woff2');
+}
+
 :root {
   /* Color Tokens matching original Vercel App */
   --bg-maroon-dark: #3c0b0e;
@@ -86,12 +143,72 @@ body.lang-gu {
   font-family: var(--font-heading);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .music-toggle-btn:hover {
   border-color: var(--gold-primary);
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+}
+
+.music-toggle-btn.playing {
+  border-color: var(--gold-primary);
+  background: rgba(85, 15, 20, 0.95);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(212, 175, 55, 0.15);
+  animation: musicGlow 2s infinite alternate ease-in-out;
+}
+
+@keyframes musicGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.7), 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+}
+
+.music-equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  width: 16px;
+  height: 14px;
+}
+
+.eq-bar {
+  width: 3px;
+  background-color: var(--gold-primary);
+  border-radius: 1px;
+  animation: eqBounce 1.2s ease-in-out infinite alternate;
+}
+
+.eq-bar:nth-child(1) {
+  height: 40%;
+  animation-delay: 0s;
+}
+
+.eq-bar:nth-child(2) {
+  height: 100%;
+  animation-delay: 0.3s;
+}
+
+.eq-bar:nth-child(3) {
+  height: 60%;
+  animation-delay: 0.6s;
+}
+
+@keyframes eqBounce {
+  0% {
+    height: 20%;
+  }
+  50% {
+    height: 100%;
+  }
+  100% {
+    height: 35%;
+  }
 }
 
 .music-icon {
@@ -167,16 +284,6 @@ body.lang-gu .lang-btn {
 body.lang-gu .banner-content {
   font-family: var(--font-gu);
   letter-spacing: 0.05em;
-}
-
-.om-symbol {
-  font-size: 1.3rem;
-}
-
-.banner-dot {
-  color: var(--gold-primary);
-  font-size: 0.7rem;
-  opacity: 0.7;
 }
 
 /* ── HERO SECTION WITH COUPLE ILLUSTRATION ───────────── */
@@ -460,14 +567,21 @@ body.lang-gu .section-sub-label {
 .bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
 
 .section-icon-header {
-  width: 70px;
-  height: 70px;
+  width: 76px;
+  height: 76px;
   margin: 0 auto 1.2rem;
 }
 
-.ganesha-header-svg {
+.header-symbol-svg {
   width: 100%;
   height: 100%;
+  filter: drop-shadow(0 2px 10px rgba(232, 171, 62, 0.4));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.header-symbol-svg:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 4px 14px rgba(232, 171, 62, 0.65));
 }
 
 .blessing-text {
@@ -641,48 +755,52 @@ body.lang-gu .footer-names {
 .venue-card {
   background: var(--bg-maroon-card);
   border: 1px solid var(--gold-border);
-  border-radius: 12px;
-  padding: 2.5rem 1.8rem;
+  border-radius: 14px;
+  padding: 2.2rem 1.4rem 1.6rem;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  transition: transform 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 310px;
+  height: 100%;
 }
 
 .card-top-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
+  flex-grow: 1;
 }
 
 .card-bottom-action {
-  margin-top: 1.5rem;
+  margin-top: 1.4rem;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .venue-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: var(--gold-primary);
+  box-shadow: 0 14px 35px rgba(232, 171, 62, 0.15);
 }
 
 .venue-icon-box {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(232, 171, 62, 0.1);
+  background: rgba(232, 171, 62, 0.12);
   border: 1px solid var(--gold-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--gold-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 0 12px rgba(232, 171, 62, 0.18);
 }
 
 .venue-svg {
@@ -692,49 +810,65 @@ body.lang-gu .footer-names {
 
 .venue-card-label {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold-primary);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.95;
 }
 
 body.lang-gu .venue-card-label {
   font-family: var(--font-gu);
-}
-
-.venue-card-sub {
-  font-size: 1rem;
-  color: var(--cream-muted);
-  margin-bottom: 0.2rem;
+  letter-spacing: 0.04em;
 }
 
 .venue-card-title {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 600;
   color: var(--gold-light);
-  margin-bottom: 0;
+  line-height: 1.35;
+  margin: 0.1rem 0 0.3rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 body.lang-gu .venue-card-title {
   font-family: var(--font-gu);
-  font-size: 1.15rem;
+  font-size: clamp(1.15rem, 2.3vw, 1.38rem);
+  font-weight: 700;
 }
 
+.venue-card-sub {
+  font-size: 0.9rem;
+  color: var(--cream-muted);
+  font-family: var(--font-heading);
+  line-height: 1.4;
+  margin-top: 0.1rem;
+}
+
+body.lang-gu .venue-card-sub {
+  font-family: var(--font-gu);
+}
+
+/* Smaller, Sleek Action Buttons */
 .action-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
-  padding: 0.5rem 1.2rem;
-  border: 1px solid var(--gold-primary);
-  border-radius: 25px;
-  background: transparent;
-  color: var(--gold-light);
+  padding: 0.38rem 0.95rem;
+  border: 1px solid var(--gold-border);
+  border-radius: 20px;
+  background: rgba(60, 11, 14, 0.6);
+  color: var(--cream-muted);
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 body.lang-gu .action-btn {
@@ -743,8 +877,15 @@ body.lang-gu .action-btn {
 
 .action-btn:hover {
   background: var(--gold-primary);
+  border-color: var(--gold-primary);
   color: var(--bg-maroon-dark);
-  font-weight: 700;
+  font-weight: 600;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(232, 171, 62, 0.35);
+}
+
+.btn-icon {
+  flex-shrink: 0;
 }
 
 /* ── QUOTE SECTION ───────────────────────────────────── */

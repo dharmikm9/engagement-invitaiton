@@ -2,22 +2,21 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dharmik &amp; Drashti — Engagement Ceremony</title>
+
   <!-- Performance & SEO Meta Tags -->
   <meta name="theme-color" content="#3c0b0e" />
+  <meta name="description" content="Engagement Ceremony Invitation of Dharmik & Drashti on 23rd August 2026 at Ramvadi, Nawa Para, Bhavnagar, Gujarat." />
   <meta property="og:title" content="Dharmik &amp; Drashti — Engagement Ceremony" />
-  <meta property="og:description" content="Engagement Ceremony Invitation of Dharmik & Drashti on 23rd August 2026 at Ramvadi, Nawa Para, Bhavnagar, Gujarat." />
+  <meta property="og:description"
+    content="Engagement Ceremony Invitation of Dharmik & Drashti on 23rd August 2026 at Ramvadi, Nawa Para, Bhavnagar, Gujarat." />
   <meta property="og:image" content="images/hero-couple.webp" />
   <meta property="og:type" content="website" />
 
   <!-- Preload Critical Hero Image for instant LCP -->
   <link rel="preload" as="image" href="images/hero-couple.webp" type="image/webp" fetchpriority="high" />
-
-  <!-- Optimized Google Fonts: Marcellus, Cormorant Garamond, Noto Serif Gujarati -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marcellus&family=Noto+Serif+Gujarati:wght@400;600;700&display=swap"
-    rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
@@ -28,16 +27,19 @@
   <!-- Floating Falling Petals Canvas -->
   <canvas id="petalsCanvas"></canvas>
 
-  <!-- Background Music Audio (On-Demand Loading) -->
-  <audio id="bgMusic" loop preload="none">
-    <source
-      src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-flute-ambient-112347.mp3"
-      type="audio/mpeg">
+  <!-- Background Music Audio (Indian Traditional Wedding Music) -->
+  <audio id="bgMusic" loop preload="metadata">
+    <source src="audio/invite-music.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Top Fixed Bar: Music & Language Switcher -->
   <div class="top-nav-bar">
     <button class="music-toggle-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle Music">
+      <div class="music-equalizer" aria-hidden="true" style="display:none;">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+      </div>
       <svg class="music-icon icon-play" viewBox="0 0 24 24">
         <path fill="currentColor"
           d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
@@ -46,7 +48,7 @@
         <path fill="currentColor"
           d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73l4.27 4.27c-.41.29-.88.51-1.39.64v2.05c1.07-.24 2.06-.75 2.9-1.46l2.96 2.96 1.27-1.27L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
       </svg>
-      <span class="music-text" data-en="Music" data-gu="સંગીત">Music</span>
+      <span class="music-text" id="musicText" data-en="Music" data-gu="સંગીત">Music</span>
     </button>
 
     <div class="lang-toggle-pill">
@@ -68,10 +70,8 @@
   <!-- HERO SECTION WITH COUPLE ILLUSTRATION BACKGROUND -->
   <section class="hero-section" id="hero">
     <div class="hero-bg-illustration">
-      <picture>
-        <source srcset="images/hero-couple.webp" type="image/webp" />
-        <img src="images/hero-couple.png" alt="Indian Engagement Couple Artwork" class="couple-bg-img" fetchpriority="high" width="1024" height="1024" />
-      </picture>
+      <img src="images/hero-couple.webp" alt="Indian Engagement Couple Artwork" class="couple-bg-img"
+        fetchpriority="high" width="1024" height="1024" />
       <div class="hero-overlay-gradient"></div>
     </div>
 
@@ -134,29 +134,89 @@
       <div class="corner-ornament bottom-right"></div>
 
       <div class="section-icon-header">
-        <svg class="ganesha-header-svg" viewBox="0 0 100 100">
-          <path
-            d="M50,10 C40,10 32,18 32,28 C32,38 42,42 45,46 C40,48 30,55 30,68 C30,82 40,90 50,90 C60,90 70,82 70,68 C70,55 60,48 55,46 C58,42 68,38 68,28 C68,18 60,10 50,10 Z"
-            fill="url(#goldGrad)" />
+        <svg class="header-symbol-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+          aria-label="Auspicious Mangal Kalash Symbol">
           <defs>
-            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#f4ead5" />
-              <stop offset="50%" stop-color="#e8ab3e" />
-              <stop offset="100%" stop-color="#bf872b" />
+            <linearGradient id="kalashGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fff4db" />
+              <stop offset="35%" stop-color="#f5d061" />
+              <stop offset="75%" stop-color="#e8ab3e" />
+              <stop offset="100%" stop-color="#ab741d" />
             </linearGradient>
+            <linearGradient id="kalashRed" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ff4d4d" />
+              <stop offset="100%" stop-color="#b30000" />
+            </linearGradient>
+            <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#80e060" />
+              <stop offset="50%" stop-color="#3fa329" />
+              <stop offset="100%" stop-color="#1f5e13" />
+            </linearGradient>
+            <linearGradient id="coconutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#d49453" />
+              <stop offset="50%" stop-color="#8f501e" />
+              <stop offset="100%" stop-color="#542a0b" />
+            </linearGradient>
+            <radialGradient id="haloKalashGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#e8ab3e" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="#e8ab3e" stop-opacity="0" />
+            </radialGradient>
           </defs>
+
+          <!-- Background Halo Ring -->
+          <circle cx="50" cy="50" r="46" fill="url(#haloKalashGrad)" />
+          <circle cx="50" cy="50" r="45" fill="none" stroke="url(#kalashGold)" stroke-width="0.8" stroke-dasharray="2 3"
+            opacity="0.6" />
+
+          <!-- Lotus Pedestal Base -->
+          <path d="M50 82 Q45 88 38 90 Q48 95 50 97 Q52 95 62 90 Q55 88 50 82 Z" fill="url(#kalashGold)" />
+          <path d="M38 90 C32 90 26 94 32 96 C40 96 46 92 48 88 Z" fill="url(#kalashGold)" opacity="0.85" />
+          <path d="M62 90 C68 90 74 94 68 96 C60 96 54 92 52 88 Z" fill="url(#kalashGold)" opacity="0.85" />
+
+          <!-- Mango Leaves (Amra Pallav) -->
+          <path d="M42 50 C30 46 18 42 20 32 C30 32 38 41 42 50 Z" fill="url(#leafGrad)" />
+          <path d="M45 48 C37 38 31 28 34 18 C44 24 46 36 45 48 Z" fill="url(#leafGrad)" />
+          <path d="M50 46 C46 34 44 22 50 12 C56 22 54 34 50 46 Z" fill="url(#leafGrad)" />
+          <path d="M55 48 C63 38 69 28 66 18 C56 24 54 36 55 48 Z" fill="url(#leafGrad)" />
+          <path d="M58 50 C70 46 82 42 80 32 C70 32 62 41 58 50 Z" fill="url(#leafGrad)" />
+
+          <!-- Leaf Vein Accents -->
+          <path d="M50 44 L50 14" stroke="url(#kalashGold)" stroke-width="0.8" opacity="0.6" />
+          <path d="M45 46 C39 37 36 29 35 20" stroke="url(#kalashGold)" stroke-width="0.7" opacity="0.5" fill="none" />
+          <path d="M55 46 C61 37 64 29 65 20" stroke="url(#kalashGold)" stroke-width="0.7" opacity="0.5" fill="none" />
+
+          <!-- Sacred Coconut (Shrifal) -->
+          <path d="M50 15 C41 23 42 36 50 40 C58 36 59 23 50 15 Z" fill="url(#coconutGrad)" stroke="url(#kalashGold)"
+            stroke-width="0.8" />
+          <path d="M46 22 C48 20 52 20 54 22 L53 30 C50 32 50 32 47 30 Z" fill="url(#kalashRed)" />
+          <circle cx="50" cy="26" r="1.5" fill="url(#kalashGold)" />
+
+          <!-- Mangal Kalash Golden Pot -->
+          <ellipse cx="50" cy="48" rx="16" ry="4" fill="url(#kalashGold)" />
+          <ellipse cx="50" cy="48" rx="14" ry="2.5" fill="#3c0b0e" opacity="0.3" />
+          <path d="M37 48 Q50 51 63 48 L65 54 Q50 58 35 54 Z" fill="url(#kalashGold)" />
+          <path d="M35 54 C26 62 26 78 38 84 Q50 87 62 84 C74 78 74 62 65 54 Q50 58 35 54 Z" fill="url(#kalashGold)" />
+
+          <!-- Embossed Swastik Medallion -->
+          <circle cx="50" cy="69" r="8" fill="url(#kalashRed)" stroke="url(#kalashGold)" stroke-width="0.8" />
+          <path d="M50 63 V75 M44 69 H56 M50 63 H55 M56 69 V74 M50 75 H45 M44 69 V64" stroke="url(#kalashGold)"
+            stroke-width="1.3" stroke-linecap="round" fill="none" />
+
+          <!-- Decorative Paisley Ornaments -->
+          <path d="M38 65 C36 68 36 72 39 74" fill="none" stroke="#ab741d" stroke-width="0.8" />
+          <path d="M62 65 C64 68 64 72 61 74" fill="none" stroke="#ab741d" stroke-width="0.8" />
         </svg>
       </div>
 
-      <h2 class="section-heading" data-en="A Promise of Forever" data-gu="સનાતન પ્રેમ અને આશીર્વાદ">
-        <span class="heading-symbol">ॐ</span> A Promise of Forever
+      <h2 class="section-heading" data-en="A Promise of Forever" data-gu="શાશ્વત વચન">
+        A Promise of Forever
       </h2>
-      <div class="gold-divider"><span>. ❖ .</span></div>
+      <div class="gold-divider"><span> ~ &#10070; ~ </span></div>
 
       <p class="blessing-text"
-        data-en="With hearts full of gratitude and the blessings of Lord Ganesha, we joyfully invite you to our engagement ceremony as we exchange rings and promise a lifetime together. Your presence and blessings will make our special day complete."
-        data-gu="શ્રી ગણેશજીના પરમ આશીર્વાદ અને પરમ કૃપા સાથે, અમે આપ સૌ સ્નેહીજનોને ધાર્મિક અને દ્રષ્ટિના સગાઈ મહોત્સવમાં હૃદયપૂર્વક આમંત્રિત કરીએ છીએ - જ્યાં અમે જીવનભરનું વચન આપવાના છીએ. આપની ઉપસ્થિતિ અને આશીર્વાદ અમારા આ શુભ દિવસને સંપૂર્ણ બનાવશે.">
-        With hearts full of gratitude and the blessings of Lord Ganesha, we joyfully invite you to our engagement
+        data-en="With hearts full of gratitude and divine blessings, we joyfully invite you to our engagement ceremony as we exchange rings and promise a lifetime together. Your presence and blessings will make our special day complete."
+        data-gu="આપ સૌ સ્નેહીજનોના હૃદયપૂર્વકના આશીર્વાદ અને પરમ કૃપા સાથે, અમે આપ સૌને ધાર્મિક અને દ્રષ્ટિના સગાઈ મહોત્સવમાં હૃદયપૂર્વક આમંત્રિત કરીએ છીએ - જ્યાં અમે જીવનભરનું વચન આપવાના છીએ. આપની ઉપસ્થિતિ અને આશીર્વાદ અમારા આ શુભ દિવસને સંપૂર્ણ બનાવશે.">
+        With hearts full of gratitude and divine blessings, we joyfully invite you to our engagement
         ceremony as we exchange rings and promise a lifetime together. Your presence and blessings will make our special
         day complete.</p>
     </div>
@@ -203,12 +263,10 @@
     <div class="couple-grid">
       <!-- Groom Card -->
       <div class="couple-card groom-card">
-        <div class="card-role-badge" data-en="The Groom" data-gu="વરરાજા">The Groom</div>
+        <div class="card-role-badge" data-en="Fiancé" data-gu="વરરાજા">Fiancé</div>
         <div class="avatar-frame">
-          <picture>
-            <source srcset="images/groom.webp" type="image/webp" />
-            <img src="images/groom.png" alt="Dharmik Groom Illustration" class="avatar-img" loading="lazy" decoding="async" width="500" height="500" />
-          </picture>
+          <img src="images/groom.webp" alt="Dharmik Groom Illustration" class="avatar-img" loading="lazy"
+            decoding="async" width="500" height="500" />
         </div>
         <h3 class="person-name" data-en="Dharmik" data-gu="ધાર્મિક">Dharmik</h3>
         <p class="person-desc"
@@ -220,12 +278,10 @@
 
       <!-- Bride Card -->
       <div class="couple-card bride-card">
-        <div class="card-role-badge" data-en="The Bride" data-gu="કન્યા">The Bride</div>
+        <div class="card-role-badge" data-en="Fiancée" data-gu="કન્યા">Fiancée</div>
         <div class="avatar-frame">
-          <picture>
-            <source srcset="images/bride.webp" type="image/webp" />
-            <img src="images/bride.png" alt="Drashti Bride Illustration" class="avatar-img" loading="lazy" decoding="async" width="500" height="500" />
-          </picture>
+          <img src="images/bride.webp" alt="Drashti Bride Illustration" class="avatar-img" loading="lazy"
+            decoding="async" width="500" height="500" />
         </div>
         <h3 class="person-name" data-en="Drashti" data-gu="દ્રષ્ટિ">Drashti</h3>
         <p class="person-desc"
@@ -254,11 +310,12 @@
             </svg>
           </div>
           <div class="venue-card-label" data-en="The Date" data-gu="શુભ દિન">The Date</div>
+          <h3 class="venue-card-title" data-en="23rd August 2026" data-gu="૨૩ ઓગસ્ટ ૨૦૨૬">23rd August 2026</h3>
           <div class="venue-card-sub" data-en="Sunday" data-gu="રવિવાર">Sunday</div>
-          <div class="venue-card-title" data-en="23rd August 2026" data-gu="૨૩ ઓગસ્ટ ૨૦૨૬">23rd August 2026</div>
         </div>
         <div class="card-bottom-action">
           <button class="action-btn" onclick="addToCalendar()">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
             <span data-en="Add to Calendar" data-gu="કેલેન્ડરમાં ઉમેરો">Add to Calendar</span>
           </button>
         </div>
@@ -274,11 +331,12 @@
             </svg>
           </div>
           <div class="venue-card-label" data-en="The Time" data-gu="શુભ સમય">The Time</div>
+          <h3 class="venue-card-title" data-en="9:00 AM onwards" data-gu="સવારે ૯:૦૦ વાગ્યાથી">9:00 AM onwards</h3>
           <div class="venue-card-sub" data-en="Morning" data-gu="સવારે">Morning</div>
-          <div class="venue-card-title" data-en="9:00 AM onwards" data-gu="સવારે ૧૦:૦૦ વાગ્યાથી">9:00 AM onwards</div>
         </div>
         <div class="card-bottom-action">
           <button class="action-btn" onclick="addToCalendar()">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
             <span data-en="Set Reminder" data-gu="રિમાઇન્ડર મુકો">Set Reminder</span>
           </button>
         </div>
@@ -294,12 +352,13 @@
             </svg>
           </div>
           <div class="venue-card-label" data-en="The Venue" data-gu="શુભ સ્થળ">The Venue</div>
-          <div class="venue-card-sub" data-en="Ramvadi, Nawa Para" data-gu="રામવાડી, નવા પરા">Ramvadi, Nawa Para</div>
-          <div class="venue-card-title" data-en="Bhavnagar, Gujarat" data-gu="ભાવનગર, ગુજરાત">Bhavnagar, Gujarat</div>
+          <h3 class="venue-card-title" data-en="Ramvadi, Nawa Para" data-gu="રામવાડી, નવા પરા">Ramvadi, Nawa Para</h3>
+          <div class="venue-card-sub" data-en="Bhavnagar, Gujarat" data-gu="ભાવનગર, ગુજરાત">Bhavnagar, Gujarat</div>
         </div>
         <div class="card-bottom-action">
           <a href="https://maps.app.goo.gl/4Ncdr54v2mUfxGdu9" target="_blank" rel="noopener" class="action-btn">
-            <span data-en="View on Map" data-gu="ગુગલ મેપ પર જુઓ">View on Map</span> 🗺️
+            <svg class="btn-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span data-en="Google Map" data-gu="ગુગલ મેપ">Google Map</span>
           </a>
         </div>
       </div>

@@ -4,20 +4,30 @@
 
 // ── 1. LANGUAGE TOGGLE ──────────────────────────────────
 let currentLang = 'en';
+let i18nElements = null;
+let btnEn = null;
+let btnGu = null;
+
+function initLanguage() {
+  btnEn = document.getElementById('btnEn');
+  btnGu = document.getElementById('btnGu');
+  i18nElements = document.querySelectorAll('[data-en]');
+}
 
 function setLang(lang) {
   currentLang = lang;
   document.body.classList.toggle('lang-gu', lang === 'gu');
-  
-  const btnEn = document.getElementById('btnEn');
-  const btnGu = document.getElementById('btnGu');
   
   if (btnEn && btnGu) {
     btnEn.classList.toggle('active', lang === 'en');
     btnGu.classList.toggle('active', lang === 'gu');
   }
 
-  document.querySelectorAll('[data-en]').forEach(el => {
+  if (!i18nElements) {
+    i18nElements = document.querySelectorAll('[data-en]');
+  }
+
+  i18nElements.forEach(el => {
     const targetText = lang === 'gu' ? el.dataset.gu : el.dataset.en;
     if (targetText) {
       el.textContent = targetText;
@@ -27,44 +37,89 @@ function setLang(lang) {
 
 
 // ── 2. BACKGROUND MUSIC TOGGLE ──────────────────────────
-let isPlaying = false;
+let audioPlayerInitialized = false;
 
-function toggleMusic() {
+function initMusicPlayer() {
   const audio = document.getElementById('bgMusic');
   const btn = document.getElementById('musicBtn');
-  if (!audio || !btn) return;
+  if (!audio || !btn || audioPlayerInitialized) return;
+  audioPlayerInitialized = true;
 
   const iconPlay = btn.querySelector('.icon-play');
   const iconMute = btn.querySelector('.icon-mute');
+  const equalizer = btn.querySelector('.music-equalizer');
+  const musicText = btn.querySelector('.music-text');
 
-  if (isPlaying) {
-    audio.pause();
-    isPlaying = false;
-    if (iconPlay) iconPlay.style.display = 'block';
-    if (iconMute) iconMute.style.display = 'none';
-  } else {
-    audio.play().then(() => {
-      isPlaying = true;
+  function updateUI(isPlaying) {
+    if (isPlaying) {
+      btn.classList.add('playing');
       if (iconPlay) iconPlay.style.display = 'none';
-      if (iconMute) iconMute.style.display = 'block';
-    }).catch(err => {
-      console.log('Audio playback interaction needed:', err);
-    });
+      if (iconMute) iconMute.style.display = 'none';
+      if (equalizer) equalizer.style.display = 'flex';
+      if (musicText) {
+        musicText.dataset.en = "Music ON";
+        musicText.dataset.gu = "સંગીત ચાલુ";
+        musicText.textContent = currentLang === 'gu' ? "સંગીત ચાલુ" : "Music ON";
+      }
+    } else {
+      btn.classList.remove('playing');
+      if (iconPlay) iconPlay.style.display = 'block';
+      if (iconMute) iconMute.style.display = 'none';
+      if (equalizer) equalizer.style.display = 'none';
+      if (musicText) {
+        musicText.dataset.en = "Music";
+        musicText.dataset.gu = "સંગીત";
+        musicText.textContent = currentLang === 'gu' ? "સંગીત" : "Music";
+      }
+    }
   }
+
+  // Sync UI with audio events
+  audio.addEventListener('play', () => updateUI(true));
+  audio.addEventListener('pause', () => updateUI(false));
+  audio.addEventListener('ended', () => updateUI(false));
+  audio.addEventListener('error', (e) => {
+    console.error('Audio playback error:', e);
+    updateUI(false);
+  });
+
+  // Global toggle handler
+  window.toggleMusic = function() {
+    if (audio.paused) {
+      audio.play().then(() => {
+        updateUI(true);
+      }).catch(err => {
+        console.warn('Playback error or blocked by browser policy:', err);
+        updateUI(false);
+      });
+    } else {
+      audio.pause();
+      updateUI(false);
+    }
+  };
 }
 
 
 // ── 3. COUNTDOWN TIMER ──────────────────────────────────
+let daysEl, hoursEl, minsEl, secsEl;
+const targetDateMs = new Date('2026-08-23T09:00:00+05:30').getTime();
+
+function initCountdown() {
+  daysEl = document.getElementById('countDays');
+  hoursEl = document.getElementById('countHours');
+  minsEl = document.getElementById('countMins');
+  secsEl = document.getElementById('countSecs');
+}
+
 function updateCountdown() {
-  const targetDate = new Date('2026-08-23T09:00:00+05:30');
-  const now = new Date();
-  const diff = targetDate - now;
+  const now = Date.now();
+  const diff = targetDateMs - now;
 
   if (diff <= 0) {
-    ['Days', 'Hours', 'Mins', 'Secs'].forEach(id => {
-      const el = document.getElementById('count' + id);
-      if (el) el.textContent = '00';
-    });
+    if (daysEl) daysEl.textContent = '00';
+    if (hoursEl) hoursEl.textContent = '00';
+    if (minsEl) minsEl.textContent = '00';
+    if (secsEl) secsEl.textContent = '00';
     return;
   }
 
@@ -75,8 +130,7 @@ function updateCountdown() {
 
   const pad = n => String(n).padStart(2, '0');
 
-  const setVal = (id, val) => {
-    const el = document.getElementById(id);
+  const setVal = (el, val) => {
     if (!el) return;
     const formattedVal = pad(val);
     if (el.textContent !== formattedVal) {
@@ -84,14 +138,11 @@ function updateCountdown() {
     }
   };
 
-  setVal('countDays', d);
-  setVal('countHours', h);
-  setVal('countMins', m);
-  setVal('countSecs', s);
+  setVal(daysEl, d);
+  setVal(hoursEl, h);
+  setVal(minsEl, m);
+  setVal(secsEl, s);
 }
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
 
 
 // ── 4. ADD TO CALENDAR ──────────────────────────────────
@@ -107,7 +158,7 @@ function addToCalendar() {
 }
 
 
-// ── 5. FALLING ROSE PETALS CANVAS (PERFORMANCE OPTIMIZED) ─────────
+// ── 5. FALLING ROSE PETALS CANVAS (PATH2D HARDWARE ACCELERATED) ──
 (function initPetalsCanvas() {
   const canvas = document.getElementById('petalsCanvas');
   if (!canvas) return;
@@ -123,7 +174,10 @@ function addToCalendar() {
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  // Reduce petal count on mobile screens to maintain smooth 60fps
+  // Optimized Path2D object reusable for all petal draws
+  const petalShape = new Path2D();
+  petalShape.ellipse(0, -0.5, 0.35, 0.65, 0, 0, Math.PI * 2);
+
   const PETAL_COUNT = W < 600 ? 18 : 32;
   const COLORS = ['#e8ab3e', '#f4ead5', '#ff9aa2', '#bf872b'];
 
@@ -148,11 +202,10 @@ function addToCalendar() {
     ctx.globalAlpha = p.opacity;
     ctx.translate(p.x, p.y);
     ctx.rotate(p.rotation);
+    ctx.scale(p.size, p.size);
 
-    ctx.beginPath();
-    ctx.ellipse(0, -p.size * 0.5, p.size * 0.35, p.size * 0.65, 0, 0, Math.PI * 2);
     ctx.fillStyle = p.color;
-    ctx.fill();
+    ctx.fill(petalShape);
 
     ctx.restore();
   }
@@ -174,7 +227,6 @@ function addToCalendar() {
     animId = requestAnimationFrame(render);
   }
 
-  // Pause canvas animation when tab is inactive to preserve CPU & mobile battery
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       isTabActive = false;
@@ -189,3 +241,19 @@ function addToCalendar() {
 
   render();
 })();
+
+
+// ── INITIALIZATION ──────────────────────────────────
+function initApp() {
+  initLanguage();
+  initMusicPlayer();
+  initCountdown();
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
